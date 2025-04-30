@@ -14,12 +14,15 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*"); // allow all domains
   res.setHeader("Access-Control-Allow-Methods", "GET, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-
   next();
 });
 
+// app.options('/*', (_, res) => {
+//   res.sendStatus(200);
+// });
+
 app.get("/places", async (req, res) => {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  // await new Promise((resolve) => setTimeout(resolve, 3002));
 
   const fileContent = await fs.readFile("./data/places.json");
 
@@ -91,4 +94,4 @@ app.use((req, res, next) => {
   res.status(404).json({ message: "404 - Not Found" });
 });
 
-app.listen(3000);
+app.listen(3002);
